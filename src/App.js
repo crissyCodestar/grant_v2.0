@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-// import SocialLinks from './Components/SocialLinks'
-// import LandingPage from './Pages/LandingPage';
-// import TechPlayground from './Pages/TechPlayground';
-// import ArtGallery from './Pages/ArtGallery';
-// import About from './Pages/About';
-// import Contact from './Pages/Contact';
+import {Switch, Route, Redirect} from 'react-router-dom';
+import WebPortfolio from './Components/WebPortfolio';
+import ArtPortfolio from './Components/ArtPortfolio';
+import Page404 from './Page404';
 
 
 class App extends Component {
@@ -12,6 +10,12 @@ class App extends Component {
     return (
       <div>
           <h1>Crystals Portfolio </h1>
+          <Switch>
+            <Redirect exact from='/' to ='/WebPortfolio'/>
+            <Route path='/WebPortfolio' component={WebPortfolio}/>
+            <Route path='/ArtPortfolio' component={ArtPortfolio}/>
+            <Route component={Page404}/>
+          </Switch>
       </div>
     );
   }
