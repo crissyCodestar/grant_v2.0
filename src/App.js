@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
-import {Switch, Route, Redirect} from 'react-router-dom';
+import {Switch, Route, Redirect, Link} from 'react-router-dom';
 import WebPortfolio from './Components/WebPortfolio';
 import ArtPortfolio from './Components/ArtPortfolio';
 import Page404 from './Page404';
+import {Button} from './Components/SmallOnes/Button';
 
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+
+    }
+  }
   render() {
+    console.log(location);
     return (
       <div>
           <h1>Crystals Portfolio </h1>
+          <Link to='/ArtPortfolio'>
+            <Button text='Art Portfolio' type='enter' colorValue='primary_gradient' />
+          </Link>
           <Switch>
             <Redirect exact from='/' to ='/WebPortfolio'/>
             <Route path='/WebPortfolio' component={WebPortfolio}/>
