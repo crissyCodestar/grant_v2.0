@@ -1,0 +1,112 @@
+.btn {
+  outline: none;
+  border-radius: 30px;
+  font-size: 1.8em;
+  font-weight: 600;
+
+}
+
+/*
+Color Value */
+
+/*
+Primary- Purple */
+.btn.primary {
+  color: white;
+  background-color: #941588;
+}
+
+/* Gradient- Purple */
+.btn.primary_gradient {
+  position: relative;
+  color: #fff;
+  background-image: -webkit-gradient(-30deg, 0 0, 0 100%, from(#f51580), to(#151a94));
+  background-image: -webkit-linear-gradient(-30deg, #f51580, #151a94);
+  background-image: linear-gradient(-30deg, #f51580, #151a94);
+  background-repeat: repeat-x;
+  background-repeat: repeat-y;
+  background-size: 200% 90px;
+  background-position: -40px -30px;
+  -webkit-transition: all 0.4s linear;
+          transition: all 0.4s linear;
+}
+
+.btn.primary_gradient_social {
+  width: 40px;
+  position:relative;
+  background-image: -webkit-gradient(-30deg, 0 0, 0 100%, from(#f51580), to(#151a94));
+  background-image: -webkit-linear-gradient(-30deg, #f51580, #151a94);
+  background-image: linear-gradient(-30deg, #f51580, #151a94);
+  background-repeat: repeat-x;
+  background-repeat: repeat-y;
+  background-size: 200% 90px;
+  background-position: -40px -30px;
+  -webkit-transition: all 0.4s linear;
+          transition: all 0.4s linear;
+}
+
+.btn.primary_gradient:hover {
+  background-position: 0 0;
+}
+.btn.primary_gradient_social:hover {
+  background-position: 0 0;
+}
+
+
+.btn.warning {
+  color: #fff;
+  background-color: #e3e25d;
+}
+
+
+.btn.warning_gradient {
+  position: relative;
+  color: #fff;
+  background-image: -webkit-gradient(-30deg, 0 0, 0 100%, from(#edec55), to(#be2509));
+  background-image: -webkit-linear-gradient(-40deg, #f51580, #151a94);
+  background-image: linear-gradient(-40deg, #fbfa5a, #d12303);
+  background-repeat: repeat-x;
+  background-repeat: repeat-y;
+  background-size: 200% 200px;
+  background-position: -70px -40px;
+  -webkit-transition: all 0.4s linear;
+          transition: all 0.4s linear;
+}
+
+.btn.warning_gradient:hover {
+  background-position: 0 0;
+}
+
+.btn.danger {
+  color: white;
+  background-color: #901b3b;
+}
+
+.btn.success {
+  color: white;
+  background-color: #d97c01;
+}
+/*
+Sizes
+*/
+
+.btn.small {
+  border: 1px solid #ddd;
+  font-size: .8em;
+  font-weight: 250;
+  padding: 4px 10px;
+}
+
+.btn.medium {
+  border: 2px solid #ddd;
+  font-size: 1.2em;
+  font-weight: 400;
+  padding: 6px 20px;
+}
+
+.btn.large {
+  border: 3px solid #ddd;
+  font-size: 1.8em;
+  font-weight: 500;
+  padding: 10px 30px;
+}
