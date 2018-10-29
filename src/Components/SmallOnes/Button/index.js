@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import styles from './Button.css';
+import './Button.css';
 
 export const TYPES = {
   PRIMARY: 'primary',
@@ -30,10 +30,10 @@ export const Button = ({type, onClick, text, colorValue, size, icon, i}) => (
       onClick={onClick}
 
        className={classNames(
-         styles.btn,
+        'btn',
           MI.MATERIAL_ICON,
-         styles[ colorValue || TYPES.PRIMARY ],
-         styles[ size || SIZES.MEDIUM ],
+         colorValue || TYPES.PRIMARY,
+         size || SIZES.MEDIUM,
        )}
     >
     {text}
