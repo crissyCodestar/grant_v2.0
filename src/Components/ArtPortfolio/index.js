@@ -7,6 +7,7 @@ class ArtPortfolio extends Component{
       <div>
       <div>Art</div>
       <SketchPad/>
+
       </div>
     )
   }

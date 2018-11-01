@@ -22,3 +22,7 @@
   stroke-lineJoin: round;
   stroke-linecap: round;
 }
+
+.emoji:hover{
+  cursor: text;
+}
