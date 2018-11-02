@@ -3,7 +3,7 @@ import {Switch, Route, Redirect, Link} from 'react-router-dom';
 import WebPortfolio from './Components/WebPortfolio';
 import ArtPortfolio from './Components/ArtPortfolio';
 import Page404 from './Page404';
-import {Button} from './Components/SmallOnes/Button';
+import {Button} from './Components/UIComponents/Button';
 
 
 class App extends Component {

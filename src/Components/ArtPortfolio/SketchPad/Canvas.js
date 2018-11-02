@@ -2,14 +2,13 @@ import React,  { Component } from 'react';
 import Immutable, { updateIn, List, Map } from 'immutable';
 import Drawing from './Drawing';
 import './SketchPad.css';
-import {Button} from '../../SmallOnes/Button';
 
 // const rect=(props)=>{
 //   const {ctx, x, y, width, height} = props;
 //   ctx.fillRect(x, y,width, height);
 // }
 
-
+const con = React.createContext('2d')
 
 class Canvas extends Component{
   constructor(){
@@ -67,8 +66,10 @@ handleMouseDown(mouseEvent) {
   console.log(point);
   this.setState(prevState => ({
        lines: prevState.lines.push(new Immutable.List([point])),
+       // lines: prevState.lines.push([point]),
        isDrawing: true
      }));
+
 }
 
 handleMouseMove(mouseEvent){
@@ -89,6 +90,7 @@ handleMouseMove(mouseEvent){
   //    line: prevState.line.updateIn([prevState.line.size - 1], line)
   //  }
   // })
+  console.log("Mouse Move", this.state.lines);
 }
 
 coordinatesEvent(mouseEvent){
@@ -123,7 +125,7 @@ const boundingRect = this.refs.canvas.getBoundingClientRect();
 // }
 
   render() {
-
+console.log(this.context);
     return (
       <div>
       <div className='head'>Canvas</div>
@@ -133,11 +135,10 @@ const boundingRect = this.refs.canvas.getBoundingClientRect();
         <Drawing lines={this.state.lines}/>
         </div>
       <div>
-        <Button text='Clear'/>
       </div>
       </div>
     )
   }
 }
-
+Canvas.contextType =con
 export default Canvas;
