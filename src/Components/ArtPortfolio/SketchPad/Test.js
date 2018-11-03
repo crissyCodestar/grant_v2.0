@@ -1,42 +1,35 @@
 import React, {Component} from 'react';
 import './SketchPad.css';
 import {Button} from '../../UIComponents/Button';
+import DrawingStroke from './DrawingStroke';
 
 class Test extends Component {
   constructor(){
     super();
     this.state = {
       marker : "rgb(0,0,0)",
-      markerWidth: '1px',
+      markerWidth: 1,
       lastEvent: null,
       isDrawing: false,
     }
     // this.canvas = React.createRef();
     this.canvas = document.createElement('canvas')
-    this.context = this.canvas.getContext('2d')
+    // this.context = this.refs.canvas.getContext('2d')
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
+    this.handleClear = this.handleClear.bind(this);
+    this.handleLineStroke = this.handleLineStroke.bind(this);
+    this.handleColorChange = this.handleColorChange.bind(this);
 
   }
-// componentDidMount(){
-// const ctx = this.refs.canvas.getContext('2d')
-//
-//
-// // console.log("context",context, "canvas",this.canvas,  );
-//
-// }
 
-// componentDidUpdate(){
-//   // this.setState({ context : this.canvas.getContext('2d') })
-// }
 componentDidMount(){
-  this.handleMouseDown()
-  this.handleMouseMove()
+  document.addEventListener("mouseup", this.handleMouseUp);
 }
 
 componentWillUnmount(){
-  this.handleMouseUp()
+  document.removeEventListener("mouseup", this.handleMouseUp);
 }
 
 handleMouseUp(mouseEvent){
@@ -44,53 +37,73 @@ handleMouseUp(mouseEvent){
 }
 
 handleMouseDown(mouseEvent){
+  const {lastEvent, marker, markerWidth} = this.state
   this.setState({ isDrawing: true, lastEvent:mouseEvent })
   console.log(mouseEvent, "Event", this.state.lastEvent);
+  const context = this.refs.canvas.getContext('2d')
+  const boundingRect = this.refs.canvas.getBoundingClientRect();
+  let x = mouseEvent.clientX - boundingRect.left
+  let y = mouseEvent.clientY - boundingRect.top
+    context.save()
+    context.beginPath()
+    context.moveTo(x, y);
+    context.lineJoin = 'round';
+    context.lineWidth= markerWidth;
+    context.strokeStyle = marker;
+    context.lineCap='round';
+    context.shadowBlur = 10;
+    context.closePath()
 
 }
 
 handleMouseMove(mouseEvent){
-  // const canvas = document.createElement('canvas')
-   // const context =  this.canvas[0].getContext('2d')
+
    const context = this.refs.canvas.getContext('2d')
    const boundingRect = this.refs.canvas.getBoundingClientRect();
 
-   // let x = mouseEvent.clientX - boundingRect.left
-   // let y = mouseEvent.clientY - boundingRect.top
-   // const context = this.context
    const {lastEvent, marker, markerWidth} = this.state
   if(!this.state.isDrawing){
     return
   }
+  let x = mouseEvent.clientX - boundingRect.left
+  let y = mouseEvent.clientY - boundingRect.top
 
-  // context.rect(20,20,150,100);
-  // context.stroke();
-  // context.lineTo(mouseEvent.offsetX, mouseEvent.offsetY)
-  context.save()
-  context.moveTo(mouseEvent.clientX, mouseEvent.clientY);
-  context.lineTo(mouseEvent.clientX, mouseEvent.clientY);
-  context.lineWidth= 15;
-  context.strokeStyle = "rgb(0,0,0)";
-  context.lineCap='round';
+
+  context.lineTo(x, y);
   context.stroke();
-
-
-
-  console.log(mouseEvent.clientX, this.state.isDrawing);
+  console.log(context.canvas.width,  context.canvas.height );
 }
 
+handleClear(){
+  const context = this.refs.canvas.getContext('2d')
+  context.clearRect(0, 0, context.canvas.clientWidth , context.canvas.clientHeight )
+}
 
+handleLineStroke(){
+  this.setState({ markerWidth: this.state.markerWidth + 1 })
+}
+
+handleColorChange(e){
+  this.setState({ marker:e.target.value })
+}
 
   render(){
     console.log(this.state.context);
     return(
       <div>
-        <canvas ref="canvas"  className='canvas'
+        <canvas ref="canvas" width='900' height='450' className='canvas'
         onMouseDown= {this.handleMouseDown}
         onMouseMove={ this.handleMouseMove}
         onMouseUp={this.handleMouseUp}>
         </canvas>
-          <Button text='Clear' className='emoji'/>
+        <div>
+          <DrawingStroke
+          markerWidth={this.state.markerWidth}
+          handleLineStroke={this.handleLineStroke}
+          marker={this.state.marker}
+          handleColorChange={this.handleColorChange}/>
+          <Button text='Clear' className='emoji' onClick={this.handleClear}/>
+        </div>
       </div>
     )
   }
