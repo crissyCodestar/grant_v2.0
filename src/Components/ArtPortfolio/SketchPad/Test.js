@@ -7,8 +7,8 @@ class Test extends Component {
   constructor(){
     super();
     this.state = {
-      marker : "rgb(0,0,0)",
-      markerWidth: 1,
+      color : "#00000",
+      markerWidth: 50,
       lastEvent: null,
       isDrawing: false,
       shadow: '',
@@ -40,7 +40,7 @@ handleMouseUp(mouseEvent){
 }
 
 handleMouseDown(mouseEvent){
-  const {lastEvent, marker, markerWidth, shadow, toggle, points} = this.state
+  const {lastEvent, color, markerWidth, shadow, toggle, points} = this.state
 
   console.log(mouseEvent, "Event", this.state.lastEvent);
   const context = this.refs.canvas.getContext('2d')
@@ -49,14 +49,14 @@ handleMouseDown(mouseEvent){
   let y = mouseEvent.clientY - boundingRect.top
   this.setState(state => ({ isDrawing: true,
     points: this.state.points.concat({x:x, y:y}),
-    shadow: !!this.state.toggle ? state.shadow = this.state.marker : state.shadow = ''
+    shadow: !!this.state.toggle ? state.shadow = this.state.color : state.shadow = ''
   }))
     // context.save();
     // context.beginPath();
     // context.moveTo(x, y);
     // context.lineJoin = 'round';
     // context.lineWidth= markerWidth;
-    // context.strokeStyle = marker;
+    // context.strokeStyle = color;
     // context.lineCap='round';
     // context.shadowBlur = markerWidth;
     // context.shadowColor = shadow ;
@@ -70,7 +70,7 @@ handleMouseMove(mouseEvent){
    const context = this.refs.canvas.getContext('2d')
    const boundingRect = this.refs.canvas.getBoundingClientRect();
 
-   const {lastEvent, marker, markerWidth, points, shadow, toggle} = this.state
+   const {lastEvent, color, markerWidth, points, shadow, toggle} = this.state
   if(!this.state.isDrawing){
     return
   }
@@ -87,7 +87,7 @@ handleMouseMove(mouseEvent){
   context.stroke();
   context.lineJoin = 'round';
   context.lineWidth= markerWidth;
-  context.strokeStyle = marker;
+  context.strokeStyle = color;
   context.lineCap='round';
   context.shadowBlur = markerWidth +4;
   context.shadowColor = shadow;
@@ -103,12 +103,12 @@ handleClear(){
   context.clearRect(0, 0, context.canvas.clientWidth , context.canvas.clientHeight )
 }
 
-handleLineStroke(){
-  this.setState({ markerWidth: this.state.markerWidth + 1 })
+handleLineStroke(e){
+  this.setState({ markerWidth: e.target.value })
 }
 
 handleColorChange(e){
-  this.setState({ marker:e.target.value })
+  this.setState({ color:e.target.value })
 }
 
 toggleShadow(){
@@ -117,23 +117,42 @@ toggleShadow(){
 
 }
 
+
+
   render(){
-    console.log(this.state.shadow, this.state.toggle, this.state.marker);
+    const {color, markerWidth } = this.state;
+
+    console.log(color);
     return(
       <div>
-        <canvas ref="canvas" width='900' height='450' className='canvas'
-        onMouseDown= {this.handleMouseDown}
-        onMouseMove={ this.handleMouseMove}
-        onMouseUp={this.handleMouseUp}>
-        </canvas>
         <div>
-          <DrawingStroke
-          markerWidth={this.state.markerWidth}
-          handleLineStroke={this.handleLineStroke}
-          marker={this.state.marker}
-          handleColorChange={this.handleColorChange}/>
-          <Button text='Clear' className='emoji' onClick={this.handleClear}/>
-          <input type='radio' onChange={this.toggleShadow} />
+          <canvas ref="canvas" width='900' height='450'
+          className='canvas'
+          onMouseDown= {this.handleMouseDown}
+          onMouseMove={ this.handleMouseMove}
+          onMouseUp={this.handleMouseUp}/>
+        </div>
+        <div  className="slider_container">
+          <Button text='Clear' size='small' className='emoji' onClick={this.handleClear}/>
+
+          <div>
+            <DrawingStroke
+            markerWidth={markerWidth}
+            handleLineStroke={this.handleLineStroke}
+            color={color}
+            handleColorChange={this.handleColorChange}/>
+          </div>
+          {/*<label className="switch">
+            <input type='checkbox' onChange={this.toggleShadow} />
+            <span className="slide round">
+
+            </span>
+          </label>*/}
+          <div className="switch">
+            <input type='checkbox' className="switch_input" onChange={this.toggleShadow} />
+            <label className="switch_label" data-off='OFF' data-on='ON'>
+            </label>
+          </div>
 
         </div>
       </div>

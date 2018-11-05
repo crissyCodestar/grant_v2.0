@@ -4,6 +4,7 @@ import WebPortfolio from './Components/WebPortfolio';
 import ArtPortfolio from './Components/ArtPortfolio';
 import Page404 from './Page404';
 import {Button} from './Components/UIComponents/Button';
+import './App.css';
 
 
 class App extends Component {
