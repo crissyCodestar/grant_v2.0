@@ -5,6 +5,7 @@ import ArtPortfolio from './Components/ArtPortfolio';
 import Page404 from './Page404';
 import {Button} from './Components/UIComponents/Button';
 import './App.css';
+import Header from './Components/Header';
 
 
 class App extends Component {
@@ -18,7 +19,7 @@ class App extends Component {
     console.log(location);
     return (
       <div>
-          <h1>Crystals Portfolio </h1>
+          <Header />
           <Link to='/ArtPortfolio'>
             <Button text='Art Portfolio' type='enter' colorValue='primary_gradient' />
           </Link>
