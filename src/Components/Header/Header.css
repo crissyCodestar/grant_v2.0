@@ -1,70 +1,82 @@
+.main_container {
+  height: 110vh;
+  width: 200vw;
+  display: flex;
+  overflow: scroll;
+}
+
 .bg_container {
   width: 100vw;
   display: flex;
   height: 100vh;
   overflow: hidden;
+
 }
 
-/* .far_bg {
-  width: 100vw;
-  height: 100vh;
-  z-index: 2;
-  background-color: black;
-  position: absolute;
-  margin: 0;
-} */
-
 .far_bg {
-
-display: inline-block;
+  display: inline-block;
   background: url(../../../images/bg.png);
   background-size: 130%;
   background-color: white;
   background-position: left;
-background-repeat: no-repeat;
-width: 100%;
-
-
+  background-repeat: no-repeat;
+  width: 100%;
 }
-/*
-.far_bg img {
-  height: 110vh;
-  width: auto;
+
+.far_bg_cris {
+  display: inline-block;
+  background: url(../../../images/bg.png);
+  background-size: 130%;
+  background-color: white;
+  background-position: right;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.cris_p {
+ display: block;
+ margin-top: 7rem;
+ font-size: 18rem;
+ color: white;
+ margin-left: 28rem;
+ mix-blend-mode: difference;
+}
+
+.grant_p {
   display: block;
-  margin: 0;
-  margin-left: -20rem;
-  margin-top: -4rem;
+  margin-top: 7rem;
+  font-size: 18rem;
+  color: white;
+  margin-left: -3rem;
+  mix-blend-mode: difference;
 }
 
-.for_bg {
+.bn{
   position: absolute;
+  bottom: 0;
+  left: 90%;
+  margin-left: -16px;
+  display: block;
+  width: 5rem;
+  height: 100vh;
+  border: 20px solid transparent;
+  background-size: 14px auto;
   z-index: 2;
-  overflow: hidden;
-  width: 120vw;
+    transform: scale(1);
+
 }
 
-.for_bg img {
-  height: 110vh;
-  width: auto;
-  display: block;
-  margin: 0;
-  margin-left: -10rem;
-  margin-top: -4rem;
-}
-
-.logo {
-  display: block;
+.bn::before {
   position: absolute;
-  z-index: 3;
-  top:10rem;
-  margin-left: -2rem;
-} */
+    top: calc(50% + 8px);
+    left: calc(50% - 90px);
+    transform: rotate(-135deg);
+    display: block;
+    width: 8rem;
+    height: 8rem;
 
- p {
-   display: block;
-   margin-top: 7rem;
-   font-size: 18rem;
-   color: white;
-   margin-left: -3rem;
-     mix-blend-mode: difference;
+    content: "";
+    border: 2px solid grey;
+    border-width: 0px 0 8px 8px;
+          mix-blend-mode: difference;
 }
