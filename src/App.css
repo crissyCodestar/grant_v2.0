@@ -1,3 +1,15 @@
+*,
+:after,
+:before {
+  margin: 0;
+  padding: 0;
+  cursor: url(https://img.icons8.com/small/12/000000/unchecked-checkbox.png), pointer;
+}
+
+*:active{
+
+}
+
 p, h1, h2, h3, div {
   padding: 1px;
 }

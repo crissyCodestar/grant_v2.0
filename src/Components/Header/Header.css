@@ -1,70 +1,156 @@
+/* .main_container {
+  height: 90vh;
+  width: 200vw;
+  display: flex;
+  overflow: scroll;
+} */
+
+
+.main_container{
+  height: 90vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: space-around;
+  grid-gap: 2rem;
+  align-content: space-around;
+  align-items: center;
+  padding: 2rem;
+}
+
+
+.digital_btn {
+  display: grid;
+  background-image: url(https://static1.squarespace.com/static/51621c46e4b058e82d89b220/57b7ecb43e00be38aebe9a9e/57b7ed73e58c62ccf4b8ae79/1471671670713/barCharts_01.png);
+  background-repeat: no-repeat;
+  height: 80vh;
+  width: auto;
+  background-color: transparent;
+
+}
+
+.digital_btn:hover {
+  cursor:cell;
+}
+
 .bg_container {
   width: 100vw;
   display: flex;
-  height: 100vh;
+  height: 90vh;
   overflow: hidden;
-}
-
-/* .far_bg {
-  width: 100vw;
-  height: 100vh;
-  z-index: 2;
-  background-color: black;
-  position: absolute;
+  padding: 0;
   margin: 0;
-} */
+}
 
 .far_bg {
-
-display: inline-block;
-  background: url(../../../images/bg.png);
-  background-size: 130%;
-  background-color: white;
+  display: inline-block;
+  background: url(../../../images/bg_wht_two.png);
+  background-size: 120%;
+  background-color: #d0d0d0;
   background-position: left;
-background-repeat: no-repeat;
-width: 100%;
-
-
-}
-/*
-.far_bg img {
-  height: 110vh;
-  width: auto;
-  display: block;
+  background-repeat: no-repeat;
+  width: 100%;
   margin: 0;
-  margin-left: -20rem;
-  margin-top: -4rem;
+  padding: 0;
+  filter:brightness(100%);
+
 }
 
-.for_bg {
-  position: absolute;
-  z-index: 2;
-  overflow: hidden;
-  width: 120vw;
-}
-
-.for_bg img {
-  height: 110vh;
-  width: auto;
-  display: block;
+.far_bg_cris {
+  display: inline-block;
+  background: url(../../../images/bg_s.png);
+  background-size: 107%;
+  background-color: rgb(29,29,29);
+  background-position: left top;
+  background-repeat: no-repeat;
+  width:  100%;
   margin: 0;
-  margin-left: -10rem;
-  margin-top: -4rem;
+  padding: 0;
+  filter:contrast(110%) brightness(90%);
+  /* opacity: .96; */
 }
 
-.logo {
+.cris_p {
+ display: block;
+ margin-top: 7rem;
+ font-size: 13rem;
+ color: white;
+ float: right;
+ /* margin-left: 39rem; */
+ /* mix-blend-mode: difference; */
+opacity: .2;
+}
+
+.grant_p {
   display: block;
+  margin-top: 7rem;
+  font-size: 13rem;
+  color: rgb(29,29,29);
+  float: left;
+  opacity: .5;
+  /* mix-blend-mode: difference; */
+}
+
+.bn{
   position: absolute;
+  top: 0;
+  left: 90%;
+  /* margin-left: -16px; */
+  float: right;
+  display: block;
+  width: 5rem;
+  height: 100vh;
+  border: 20px solid transparent;
+  background-color: transparent;
+  background-size: 14px auto;
+  z-index: 4;
+  transform: scale(1);
+}
+
+.bn::before {
+  position: absolute;
+  top: calc(50% + 3rem);
+  left: calc(50% - 90px);
+  transform: rotate(-135deg);
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  content: "";
+  border: 2px solid transparent;
+  border-width: 0px 0 8px 8px;
+
+}
+
+.bn:hover::before {
+  content: "art";
+  font-size: 2.5rem;
+  color: white;
+  border: 2px solid #fff;
+  border-width: 0px 0 8px 8px;
+  opacity: .9;
+}
+
+.overlay {
+
+  position: absolute;
+  /* background-color: rgb(0,0,0); */
   z-index: 3;
-  top:10rem;
-  margin-left: -2rem;
-} */
+  width: 100vw;
+  height: 90vh;
+}
 
- p {
-   display: block;
-   margin-top: 7rem;
-   font-size: 18rem;
-   color: white;
-   margin-left: -3rem;
-     mix-blend-mode: difference;
+.text_box {
+  position: absolute;
+  width: 16rem;
+  height: 5rem;
+  background-color: #fff;
+  top:20rem;
+  right: 0rem;
+  font-size:5.5rem;
+  font-weight: bold;
+  color: rgb(29,29,29);
+  float: right;
+  mix-blend-mode: difference;
+  padding-left: 1rem;
+  opacity: .3;
 }
