@@ -132,11 +132,10 @@ toggleShadow(){
           onMouseMove={ this.handleMouseMove}
           onMouseUp={this.handleMouseUp}/>
         </div>
-        <div  className="slider_container">
+        <div className="slider_container">
           <Button text='Clear' size='small' className='emoji' onClick={this.handleClear}/>
-
-          <div>
-            <DrawingStroke
+        <div>
+        <DrawingStroke
             markerWidth={markerWidth}
             handleLineStroke={this.handleLineStroke}
             color={color}

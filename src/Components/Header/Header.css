@@ -1,8 +1,36 @@
-.main_container {
+/* .main_container {
   height: 90vh;
   width: 200vw;
   display: flex;
   overflow: scroll;
+} */
+
+
+.main_container{
+  height: 90vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: space-around;
+  grid-gap: 2rem;
+  align-content: space-around;
+  align-items: center;
+  padding: 2rem;
+}
+
+
+.digital_btn {
+  display: grid;
+  background-image: url(https://static1.squarespace.com/static/51621c46e4b058e82d89b220/57b7ecb43e00be38aebe9a9e/57b7ed73e58c62ccf4b8ae79/1471671670713/barCharts_01.png);
+  background-repeat: no-repeat;
+  height: 80vh;
+  width: auto;
+  background-color: transparent;
+
+}
+
+.digital_btn:hover {
+  cursor:cell;
 }
 
 .bg_container {
@@ -16,7 +44,7 @@
 
 .far_bg {
   display: inline-block;
-  background: url(../../../images/bg_wht.png);
+  background: url(../../../images/bg_wht_two.png);
   background-size: 120%;
   background-color: #d0d0d0;
   background-position: left;
@@ -24,7 +52,7 @@
   width: 100%;
   margin: 0;
   padding: 0;
-  filter:brightness(90%);
+  filter:brightness(100%);
 
 }
 
@@ -59,7 +87,7 @@ opacity: .2;
   font-size: 13rem;
   color: rgb(29,29,29);
   float: left;
-  opacity: .2;
+  opacity: .5;
   /* mix-blend-mode: difference; */
 }
 
@@ -105,7 +133,7 @@ opacity: .2;
 .overlay {
 
   position: absolute;
-  background-color: rgb(0,0,0, .2);
+  /* background-color: rgb(0,0,0); */
   z-index: 3;
   width: 100vw;
   height: 90vh;

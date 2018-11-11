@@ -6,7 +6,15 @@ import './Header.css';
 
 const Header = () => (
   <div className='main_container'>
-    <div className='bg_container'>
+
+
+      <button className="digital_btn">
+      </button>
+
+      <button className="digital_btn">
+      </button>
+
+    {/*<div className='bg_container'>
       <div className='far_bg_cris'>
         <div className='text_box'>web</div>
         <button className='bn'></button>
@@ -21,7 +29,7 @@ const Header = () => (
           <p className='grant_p'>...grant</p>
       </div>
 
-    </div>
+    </div>*/}
   </div>
 )
 
